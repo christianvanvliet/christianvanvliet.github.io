@@ -4,11 +4,543 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Christian Van Vliet</title>
+  <meta name="description" content="Research, conjectures, and long-form writing on Bitcoin, monetary systems, and economic thought.">
+
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --bg-soft: #f1eee8;
+      --text: #1f1f1b;
+      --muted: #5f5c56;
+      --rule: #cfc9bd;
+      --link: #1f1f1b;
+      --accent: #4b463d;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141412;
+        --bg-soft: #1a1a17;
+        --text: #ece8df;
+        --muted: #b7b0a3;
+        --rule: #3a382f;
+        --link: #ece8df;
+        --accent: #d8d1c3;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Times New Roman", Times, serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      border-bottom-color: currentColor;
+    }
+
+    .site {
+      width: min(1080px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .rule {
+      border: 0;
+      border-top: 1px solid var(--rule);
+      margin: 0;
+    }
+
+    .site-header {
+      padding: 26px 0 18px;
+    }
+
+    .site-header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+    }
+
+    .site-title {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      margin: 0;
+    }
+
+    .site-tagline {
+      margin: 4px 0 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .site-nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.98rem;
+    }
+
+    .site-nav a {
+      color: var(--muted);
+    }
+
+    .hero {
+      padding: 64px 0 56px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 48px;
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.4rem, 5vw, 4.25rem);
+      line-height: 0.98;
+      font-weight: 700;
+      margin: 0 0 20px;
+    }
+
+    .hero p.lead {
+      font-size: 1.18rem;
+      max-width: 38rem;
+      margin: 0 0 20px;
+    }
+
+    .hero p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      max-width: 36rem;
+    }
+
+    .hero-meta {
+      align-self: end;
+      padding: 18px 0 0 18px;
+      border-left: 2px solid var(--rule);
+    }
+
+    .meta-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .meta-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.98rem;
+    }
+
+    .meta-list span {
+      display: inline-block;
+      min-width: 110px;
+      color: var(--muted);
+    }
+
+    .section {
+      padding: 44px 0 54px;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin: 0 0 22px;
+      padding: 0 10px 0 0;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      color: var(--muted);
+      background: var(--bg);
+    }
+
+    .featured {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    .featured-card {
+      padding: 0 0 0 18px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .featured-card h3 {
+      margin: 0 0 10px;
+      font-size: 2rem;
+      line-height: 1.1;
+    }
+
+    .featured-card .subhead {
+      font-size: 1.02rem;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .featured-card p {
+      margin: 0 0 18px;
+      max-width: 42rem;
+    }
+
+    .featured-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .featured-links a {
+      font-size: 1rem;
+    }
+
+    .featured-notes {
+      background: var(--bg-soft);
+      padding: 18px 20px;
+      border: 1px solid var(--rule);
+    }
+
+    .featured-notes h4 {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .featured-notes ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .featured-notes li {
+      margin: 0 0 10px;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    .archive-intro p {
+      margin-top: 0;
+      color: var(--muted);
+      max-width: 24rem;
+    }
+
+    .archive-list {
+      border-top: 1px solid var(--rule);
+    }
+
+    .archive-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .archive-item h4 {
+      margin: 0 0 6px;
+      font-size: 1.2rem;
+    }
+
+    .archive-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .archive-year {
+      color: var(--muted);
+      white-space: nowrap;
+      font-size: 0.98rem;
+      padding-top: 2px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    .about-copy {
+      padding-left: 18px;
+      border-left: 3px solid var(--rule);
+    }
+
+    .about-copy p {
+      margin: 0 0 16px;
+      max-width: 42rem;
+    }
+
+    .about-aside {
+      color: var(--muted);
+    }
+
+    .about-aside p {
+      margin: 0 0 14px;
+    }
+
+    .site-footer {
+      padding: 28px 0 60px;
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .featured,
+      .archive-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 28px;
+      }
+
+      .site-header-inner {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .hero-meta,
+      .featured-card,
+      .about-copy {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .archive-item {
+        grid-template-columns: 1fr;
+      }
+
+      .archive-year {
+        padding-top: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Christian Van Vliet</h1>
-  <p>Personal website in progress.</p>
-  <p>Research, writing, and projects coming soon.</p>
-  <p>Contact: research@christianvanvliet.com</p>
+  <div class="site">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div>
+          <h1 class="site-title">Christian Van Vliet</h1>
+          <p class="site-tagline">Research, conjectures, and long-form writing.</p>
+        </div>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/research/">Research</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <hr class="rule">
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Archival Research Homepage</p>
+          <h2>On Bitcoin, monetary systems, and the architecture of conviction.</h2>
+          <p class="lead">
+            This site serves as a home for working papers, conjectures, and essays
+            concerned with Bitcoin, mining economics, market structure, and long-horizon thought.
+          </p>
+          <p>
+            The emphasis is on clarity, durable argument, and publication-quality writing.
+            Over time, this archive will gather formal papers, shorter notes, and selected essays.
+          </p>
+        </div>
+
+        <aside class="hero-meta" aria-label="Site metadata">
+          <ul class="meta-list">
+            <li><span>Author</span>Christian Van Vliet</li>
+            <li><span>Focus</span>Bitcoin, markets, monetary theory</li>
+            <li><span>Status</span>Working archive</li>
+            <li><span>Format</span>Papers, essays, research notes</li>
+          </ul>
+        </aside>
+      </section>
+
+      <hr class="rule">
+
+      <section class="section" aria-labelledby="featured-research">
+        <p class="section-label">Featured Research</p>
+
+        <div class="featured">
+          <div class="featured-card">
+            <h3 id="featured-research">The Van Vliet Bitcoin Price Conjecture</h3>
+            <p class="subhead">
+              A production-anchor framework exploring Bitcoin price formation
+              through mining economics and monetary demand.
+            </p>
+            <p>
+              This paper advances a conjectural framework for understanding Bitcoin’s
+              long-run price behavior through the interaction of production cost, issuance,
+              miner economics, and monetary demand. It is presented as a research paper
+              for public reading, critique, and refinement.
+            </p>
+            <p>
+              The current edition is intended as the first formal publication in a broader
+              body of work concerning Bitcoin valuation, market structure, and economic narrative.
+            </p>
+
+            <div class="featured-links">
+              <a href="/research/bitcoin-price-conjecture/">Read online</a>
+              <a href="/files/van-vliet-bitcoin-price-conjecture.pdf">Download PDF</a>
+            </div>
+          </div>
+
+          <aside class="featured-notes">
+            <h4>Paper Metadata</h4>
+            <ul>
+              <li><strong>Author:</strong> Christian Van Vliet</li>
+              <li><strong>Year:</strong> 2026</li>
+              <li><strong>Version:</strong> Placeholder v1.0</li>
+              <li><strong>Format:</strong> Digital paper and PDF</li>
+              <li><strong>Status:</strong> Public working edition</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section class="section" aria-labelledby="research-archive">
+        <p class="section-label">Research Archive</p>
+
+        <div class="archive-grid">
+          <div class="archive-intro">
+            <h3 id="research-archive">Current and forthcoming work</h3>
+            <p>
+              A small archive of published papers, developing notes, and longer essays.
+              This section is intended to grow deliberately rather than quickly.
+            </p>
+          </div>
+
+          <div class="archive-list">
+            <article class="archive-item">
+              <div>
+                <h4><a href="/research/bitcoin-price-conjecture/">The Van Vliet Bitcoin Price Conjecture</a></h4>
+                <p>A formal paper proposing a production-anchor framework for Bitcoin price action.</p>
+              </div>
+              <div class="archive-year">2026</div>
+            </article>
+
+            <article class="archive-item">
+              <div>
+                <h4>Notes on Production Anchors</h4>
+                <p>Shorter working notes related to mining economics, issuance, and valuation.</p>
+              </div>
+              <div class="archive-year">Forthcoming</div>
+            </article>
+
+            <article class="archive-item">
+              <div>
+                <h4>Selected Essays</h4>
+                <p>Long-form writing on Bitcoin, economic narrative, and conviction over time.</p>
+              </div>
+              <div class="archive-year">Forthcoming</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <hr class="rule">
+
+      <section class="section" aria-labelledby="about-site">
+        <p class="section-label">About</p>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <h3 id="about-site">A personal archive of published thought</h3>
+            <p>
+              This website is a home for serious writing under my own name, with an emphasis
+              on research, conjecture, and durable argument. The goal is not constant output,
+              but carefully developed work that can be read, cited, and revisited over time.
+            </p>
+            <p>
+              The archive begins with Bitcoin-related work, though it may expand into adjacent
+              questions in economics, business, and long-horizon systems thinking.
+            </p>
+          </div>
+
+          <div class="about-aside">
+            <p>
+              A short biographical page, fuller research index, and direct contact page
+              will follow as the site develops.
+            </p>
+            <p>
+              For correspondence regarding papers, media, or research inquiries, use the contact details below.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <hr class="rule">
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <strong>Christian Van Vliet</strong><br>
+          <a href="mailto:research@christianvanvliet.com">research@christianvanvliet.com</a><br>
+          <a href="mailto:christian@christianvanvliet.com">christian@christianvanvliet.com</a>
+        </div>
+
+        <div class="footer-links">
+          <a href="/research/">Research</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+          <a href="https://github.com/christianvanvliet">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
