@@ -1,1 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Christian Van Vliet</title>
+  <meta name="description" content="Contact details for Christian Van Vliet.">
 
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --bg-soft: #f1eee8;
+      --text: #1f1f1b;
+      --muted: #5f5c56;
+      --rule: #cfc9bd;
+      --link: #1f1f1b;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141412;
+        --bg-soft: #1a1a17;
+        --text: #ece8df;
+        --muted: #b7b0a3;
+        --rule: #3a382f;
+        --link: #ece8df;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Times New Roman", Times, serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover { border-bottom-color: currentColor; }
+
+    .site {
+      width: min(900px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .rule {
+      border: 0;
+      border-top: 1px solid var(--rule);
+      margin: 0;
+    }
+
+    .site-header {
+      padding: 26px 0 18px;
+    }
+
+    .site-header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+    }
+
+    .site-title {
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .site-tagline {
+      margin: 4px 0 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .site-nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.98rem;
+    }
+
+    .site-nav a { color: var(--muted); }
+
+    .page-header {
+      padding: 58px 0 32px;
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      line-height: 1;
+      margin: 0 0 16px;
+    }
+
+    .lead {
+      font-size: 1.16rem;
+      color: var(--muted);
+      max-width: 40rem;
+      margin: 0;
+    }
+
+    .content {
+      width: min(700px, 100%);
+      padding: 42px 0 54px;
+    }
+
+    .contact-box {
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      padding: 22px 24px;
+    }
+
+    .contact-box p {
+      margin: 0 0 14px;
+    }
+
+    .contact-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .site-footer {
+      padding: 28px 0 60px;
+      font-size: 0.98rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a { color: var(--muted); }
+
+    @media (max-width: 760px) {
+      .site-header-inner {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div>
+          <p class="site-title"><a href="/">Christian Van Vliet</a></p>
+          <p class="site-tagline">Research, conjectures, and long-form writing.</p>
+        </div>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/research/">Research</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <hr class="rule">
+
+    <main>
+      <section class="page-header">
+        <p class="eyebrow">Contact</p>
+        <h1>Correspondence and inquiries.</h1>
+        <p class="lead">
+          For research-related correspondence, papers, or general inquiries,
+          the addresses below may be used.
+        </p>
+      </section>
+
+      <hr class="rule">
+
+      <section class="content">
+        <div class="contact-box">
+          <p><strong>Research:</strong> <a href="mailto:research@christianvanvliet.com">research@christianvanvliet.com</a></p>
+          <p>
+            This page is currently a placeholder and may later include additional
+            guidance for media, business, or publication-related communication.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <hr class="rule">
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <strong>Christian Van Vliet</strong><br>
+          <a href="mailto:research@christianvanvliet.com">research@christianvanvliet.com</a><br>
+        </div>
+
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/research/">Research</a>
+          <a href="/about/">About</a>
+          <a href="https://github.com/christianvanvliet">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
